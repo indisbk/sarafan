@@ -33,20 +33,20 @@ public class Message {
     }
 
     @PostMapping
-    public List<Map<String, String>> createMessage(@RequestBody Map<String, String> message) {
+    public Map<String, String> createMessage(@RequestBody Map<String, String> message) {
         int nextId = messages.size();
         message.put("id", String.valueOf(++nextId));
         messages.add(message);
-        return messages;
+        return message;
     }
 
     @PutMapping("{id}")
-    public List<Map<String, String>> update(@PathVariable String id, @RequestBody Map<String, String> message) throws NotFoundException {
+    public Map<String, String> update(@PathVariable String id, @RequestBody Map<String, String> message) throws NotFoundException {
         getOneMessage(id);
         deleteMessage(id);
         message.put("id", id);
         messages.add(message);
-        return messages;
+        return message;
     }
 
     @DeleteMapping("{id}")
