@@ -9,8 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table
-@ToString(of = {"id", "text"})
-@EqualsAndHashCode(of = "id")
+@Data
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,28 +23,4 @@ public class Message {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     @JsonView(Views.FullMessage.class)
     private LocalDateTime createdDate;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
 }
