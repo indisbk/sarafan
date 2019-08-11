@@ -4,18 +4,14 @@ plugins {
 	id 'war'
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.learning'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-
-configurations {
-	developmentOnly
-	runtimeClasspath {
-		extendsFrom developmentOnly
-	}
-}
 
 repositories {
 	mavenCentral()
@@ -24,6 +20,8 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.postgresql:postgresql')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.3.6.RELEASE')
 	compileOnly 'org.projectlombok:lombok:1.18.8'
 	annotationProcessor 'org.projectlombok:lombok:1.18.8'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
